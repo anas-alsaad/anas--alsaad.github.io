@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Finance Sector Revamp — Anas Al-Saad</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="case-styles.css">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="case-shell.jsx"></script>
+
+<script type="text/babel">
+
+const CHAPTERS = [
+  { id: "context",     label: "What it is" },
+  { id: "challenge",   label: "The challenge" },
+  { id: "approach",    label: "Three pillars" },
+  { id: "dashboard",   label: "Unified dashboard" },
+  { id: "configurator",label: "Select Car" },
+  { id: "aftersales",  label: "After-sales" },
+  { id: "walkthrough", label: "The full flow" },
+  { id: "team",        label: "Team" },
+  { id: "outcome",     label: "Result" },
+  { id: "reflect",     label: "What I learned" },
+];
+
+const TEAM = [
+  { initials: "BD", name: "Bassel Al Droubi",     role: "UX Designer",     color: "#2418f5", href: "https://www.linkedin.com/" },
+  { initials: "AA", name: "Aljawhara Abu Habeeb", role: "Product Owner",   color: "#7a4ddb" },
+  { initials: "IA", name: "Ibrahim Almarzooqi",   role: "Product Owner",   color: "#1a8f6b" },
+  { initials: "MA", name: "Mutaz Alaskary",       role: "Product Manager", color: "#c0563b" },
+];
+
+function FinanceCase() {
+  return (
+    <div style={{ background: "var(--bg)", color: "var(--ink)", fontFamily: "var(--sans)" }}>
+      <CaseTopNav />
+
+      <CaseHero
+        index={3}
+        tag="B2B · Design Lead"
+        title={<>Finance Sector <em style={{ fontStyle: "italic" }}>Revamp</em></>}
+        lede="Rebuilding the finance experience around clarity and control — one Finance dashboard, a fleet finance flow reimagined as a configurator, and after-sales lifted out of buried submenus."
+        meta={[
+          { lbl: "Role",     val: "Design Lead" },
+          { lbl: "Team",     val: "1 UX designer · 2 POs · 1 manager" },
+          { lbl: "Timeline", val: "Q1 2026" },
+          { lbl: "Surface",  val: "Al Rajhi e-business portal (web)" },
+        ]}
+      />
+
+      <div className="cs-shell">
+        <CaseSideNav chapters={CHAPTERS} />
+
+        <main className="cs-main">
+
+          {/* ───── 01 CONTEXT ───── */}
+          <CaseSection id="context" ch="01" title="What it is">
+            <div className="cs-prose">
+              <p>
+                The finance section of the e-business portal is where SME and corporate clients apply for, manage, and service their financing — fleet finance, POS finance, BIF, eCommerce. Over the years it had grown by accretion: each new product bolted on, each after-sales action a separate flow. By the time we picked it up, the section worked, but it didn't <em>feel like</em> one product.
+              </p>
+            </div>
+
+            <div className="cs-desktop-frame feature">
+              <img src="assets/finance-dashboard.png" alt="The redesigned Finance dashboard — outstanding obligation, next due date, all financing requested, active finances, and quick-actions row." loading="eager" />
+            </div>
+            <p className="cs-caption">
+              <span className="fig-no">FIG. 01</span>
+              <span>The new Finance dashboard. The whole section's surface area condensed into a single screen — quick actions across the top, the financial picture in the middle, active finances and request status alongside.</span>
+            </p>
+
+            <div className="cs-callout">
+              The job was never "redesign Finance." It was: <em>make a section that grew by accretion feel like it was designed once, on purpose.</em>
+            </div>
+          </CaseSection>
+
+          {/* ───── 02 CHALLENGE ───── */}
+          <CaseSection id="challenge" ch="02" title="The challenge">
+            <div className="cs-prose">
+              <p>
+                Three problems kept surfacing in user feedback. They sounded different in interviews, but they were the same shape underneath: <strong>the product was forcing users to assemble the picture themselves.</strong>
+              </p>
+            </div>
+
+            <div className="cs-pin-list" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+              <div className="cs-pin">
+                <div className="n">A</div>
+                <div className="t"><strong>Complex fleet application.</strong> Procedurally heavy, copy that read like a contract, no sense of what you were building.</div>
+              </div>
+              <div className="cs-pin">
+                <div className="n">B</div>
+                <div className="t"><strong>Scattered financial picture.</strong> Balances, due dates, and ongoing requests lived in different corners of the portal.</div>
+              </div>
+              <div className="cs-pin">
+                <div className="n">C</div>
+                <div className="t"><strong>Buried after-sales.</strong> Restructuring, early settlement, request tracking — all useful, all two or three taps away.</div>
+              </div>
+            </div>
+
+            <div className="cs-prose">
+              <p>
+                The result was the obvious one: high support load, low completion on the journeys that mattered most for the bank's revenue.
+              </p>
+            </div>
+          </CaseSection>
+
+          {/* ───── 03 APPROACH ───── */}
+          <CaseSection id="approach" ch="03" title="Three pillars">
+            <div className="cs-prose">
+              <p>
+                We organised the whole revamp around three pillars. Every screen we touched had to earn its place against one of them.
+              </p>
+            </div>
+
+            <div className="cs-principles">
+              <div className="cs-principle">
+                <div className="num">PILLAR 01</div>
+                <h4>Centralize the financial picture</h4>
+                <p>One Finance dashboard. Outstanding obligation, next due date, all financing requested, every active product — visible in one screen instead of four.</p>
+              </div>
+              <div className="cs-principle">
+                <div className="num">PILLAR 02</div>
+                <h4>Reframe fleet finance as a configurator</h4>
+                <p>Stop asking users to fill a form for a fleet they can't see. Let them <em>build</em> it — car by car, with the price recalculating as they go.</p>
+              </div>
+              <div className="cs-principle">
+                <div className="num">PILLAR 03</div>
+                <h4>Surface after-sales and tracking</h4>
+                <p>Lift restructuring, early settlement, the tracker, and finance history out of the menu and onto the dashboard. Make every active request show its status without a click.</p>
+              </div>
+            </div>
+          </CaseSection>
+
+          {/* ───── 04 DASHBOARD ───── */}
+          <CaseSection id="dashboard" ch="04" title="The unified Finance dashboard">
+            <div className="cs-prose">
+              <p>
+                Everything important lives on one screen. Below are the four design decisions that did the heaviest lifting.
+              </p>
+            </div>
+
+            <div className="cs-desktop-frame">
+              <img src="assets/finance-dashboard.png" alt="The unified Finance dashboard." />
+            </div>
+
+            <div className="cs-pin-list">
+              <div className="cs-pin">
+                <div className="n">1</div>
+                <div className="t"><strong>Quick-actions row up top.</strong> Restructuring, Early Settlement, Tracker, After-sale services, and Finance History — one tap, no submenus.</div>
+              </div>
+              <div className="cs-pin">
+                <div className="n">2</div>
+                <div className="t"><strong>"All Financing Requested" in one chart.</strong> POS, eCommerce, BIF — same scale, same view. The single financial picture users were asking for.</div>
+              </div>
+              <div className="cs-pin">
+                <div className="n">3</div>
+                <div className="t"><strong>Request Status sidebar.</strong> Active applications surface their state without making the user navigate to find them.</div>
+              </div>
+              <div className="cs-pin">
+                <div className="n">4</div>
+                <div className="t"><strong>Active Finances list.</strong> Every product is summarised the same way — installment, due date, paid, remaining. One pattern, applied four times.</div>
+              </div>
+            </div>
+          </CaseSection>
+
+          {/* ───── 05 CONFIGURATOR (Featured) ───── */}
+          <CaseSection id="configurator" ch="05" title="Featured solution: Select Car">
+            <div className="cs-featured-eyebrow">Featured solution</div>
+            <div className="cs-featured-title">
+              Turning a finance form into a build-your-fleet configurator.
+            </div>
+
+            <div className="cs-prose">
+              <p>
+                <strong>The ask.</strong> The business needed users to fully customise the fleet they were applying for — type, model, year, variant, exterior and interior colour, quantity per configuration, and the ability to mix configurations within a single application. The old form couldn't do most of that. It assumed merchants applied for pre-bundled fleets and walked them through a multi-step questionnaire to get there.
+              </p>
+              <p>
+                <strong>The insight.</strong> The unlock was reframing the application as a configurator, not a form. Users were no longer applying for an abstract fleet — they were <em>building it</em>, one car at a time, with the price updating as they went. Once you say it out loud, every other decision falls out of it.
+              </p>
+            </div>
+
+            <div className="cs-desktop-frame feature">
+              <img src="assets/finance-select-cars.png" alt="The Select Al Rajhi Cars configurator — fleet list on the left, full specifications in the middle, live Initial Quotation on the right." />
+            </div>
+            <p className="cs-caption">
+              <span className="fig-no">FIG. 02</span>
+              <span>Three columns, one mental model: <em>what I'm building</em>, <em>what I'm building it from</em>, <em>what it'll cost</em>.</span>
+            </p>
+
+            <div className="cs-prose">
+              <p><strong>The design</strong> falls into three columns:</p>
+            </div>
+
+            <div className="cs-move">
+              <div className="num">LEFT</div>
+              <div>
+                <h4>The fleet, as a list of configurations</h4>
+                <p>
+                  Each card is one configuration with its own quantity. Users can <strong>duplicate</strong> a card to spin up "10 of these and 5 of those" without re-picking the spec, or delete one outright. An "Add Another Car" tile invites the next configuration. A Finance Eligibility Limit progress bar at the very top shows how much of the user's approved limit they've already consumed — so the answer to "can I afford this configuration?" is always visible.
+                </p>
+              </div>
+            </div>
+
+            <div className="cs-move">
+              <div className="num">CENTER</div>
+              <div>
+                <h4>Full specifications for the selected car</h4>
+                <p>
+                  Vehicle type, model, year, variant, exterior + interior colour. Detailed specs (engine, fuel, transmission, drivetrain, capacity, distributor) live behind a "More Details" disclosure so the panel stays scannable. Whichever card is selected on the left drives this whole panel — picking a different card changes context, not page.
+                </p>
+              </div>
+            </div>
+
+            <div className="cs-move">
+              <div className="num">RIGHT</div>
+              <div>
+                <h4>A live Initial Quotation</h4>
+                <p>
+                  Quantity, vehicle price including VAT, down payment, registration fee, total. It recalculates the moment anything changes on the left or center. The price isn't a separate "Summary" step at the end — it's right there, the whole time, getting the user used to the number.
+                </p>
+              </div>
+            </div>
+
+            <p className="cs-pullquote">
+              "Turning a finance form into a configurator was the unlock — users were no longer applying for an abstract fleet, they were building it."
+            </p>
+
+            <div className="cs-prose">
+              <p>
+                <strong>The discovery step.</strong> Before the configurator, users browse. Vehicle type tabs across the top, a 3-up carousel of available models, exterior + interior colour swatches, full specs underneath. The job here is to let merchants window-shop without committing — so they enter the configurator already knowing what they want.
+              </p>
+            </div>
+
+            <div className="cs-desktop-frame">
+              <img src="assets/finance-explore-cars.png" alt="The Explore Cars browsing screen — vehicle types, model carousel, colour pickers, full car specs." />
+            </div>
+            <p className="cs-caption">
+              <span className="fig-no">FIG. 03</span>
+              <span>The discovery step. Users browse models and trims before committing them to a fleet build.</span>
+            </p>
+
+            <div className="cs-chip-row">
+              <span className="cs-chip">Type</span>
+              <span className="cs-chip">Model</span>
+              <span className="cs-chip">Year</span>
+              <span className="cs-chip">Variant</span>
+              <span className="cs-chip">Exterior color</span>
+              <span className="cs-chip">Interior color</span>
+              <span className="cs-chip">Quantity</span>
+            </div>
+          </CaseSection>
+
+          {/* ───── 06 AFTER-SALES ───── */}
+          <CaseSection id="aftersales" ch="06" title="Streamlined after-sales & tracking">
+            <div className="cs-prose">
+              <p>
+                After-sales — restructuring, early settlement, the tracker, finance history — was lifted out of buried submenus and placed on the dashboard's quick-actions row. From there, every active application exposes a clear <strong>4-step status</strong> so users always know where they stand: <em>Request Initiated → Upload Documents → Review Application → Ready For Execution</em>. If something is needed from the user, the row says so plainly and gives them the action right there.
+              </p>
+            </div>
+
+            <div className="cs-desktop-frame">
+              <img src="assets/finance-request-status.png" alt="POS Finance Request Details with the 4-step progress bar, request metadata, and Cancel / Upload Documents actions." />
+            </div>
+            <p className="cs-caption">
+              <span className="fig-no">FIG. 04</span>
+              <span>Request status, four steps, in the user's words. "Missing Documents" stops being a mystery — it's a button.</span>
+            </p>
+          </CaseSection>
+
+          {/* ───── 07 WALKTHROUGH ───── */}
+          <CaseSection id="walkthrough" ch="07" title="The full flow">
+            <div className="cs-prose">
+              <p>
+                Six screens, in order — from "where do I stand?" to "the request is on its way."
+              </p>
+            </div>
+
+            <div className="cs-walk-grid">
+              <div className="cell">
+                <div className="step-num">01 · DASHBOARD</div>
+                <img src="assets/finance-dashboard.png" alt="" />
+                <div className="step-cap">Start: see everything in one place.</div>
+              </div>
+              <div className="cell">
+                <div className="step-num">02 · PRODUCTS</div>
+                <img src="assets/finance-products.png" alt="" />
+                <div className="step-cap">Browse financing products by category.</div>
+              </div>
+              <div className="cell">
+                <div className="step-num">03 · PRODUCT DETAILS</div>
+                <img src="assets/finance-product-details.png" alt="" />
+                <div className="step-cap">Understand the offer before applying.</div>
+              </div>
+              <div className="cell">
+                <div className="step-num">04 · EXPLORE CARS</div>
+                <img src="assets/finance-explore-cars.png" alt="" />
+                <div className="step-cap">Browse cars before building the fleet.</div>
+              </div>
+              <div className="cell">
+                <div className="step-num">05 · SELECT CAR</div>
+                <img src="assets/finance-select-cars.png" alt="" />
+                <div className="step-cap">Build the fleet — the configurator moment.</div>
+              </div>
+              <div className="cell">
+                <div className="step-num">06 · REQUEST STATUS</div>
+                <img src="assets/finance-request-status.png" alt="" />
+                <div className="step-cap">Track the request through to execution.</div>
+              </div>
+            </div>
+          </CaseSection>
+
+          {/* ───── 08 TEAM ───── */}
+          <CaseSection id="team" ch="08" title="Team">
+            <div className="cs-prose">
+              <p>
+                I led design end-to-end. The work below would not exist without these four.
+              </p>
+            </div>
+
+            <div className="cs-team">
+              {TEAM.map((m) => {
+                const inner = (
+                  <>
+                    <div className="av" style={{ background: m.color }}>{m.initials}</div>
+                    <div>
+                      <div className="nm">{m.name}</div>
+                      <div className="ro">{m.role}</div>
+                    </div>
+                  </>
+                );
+                return m.href ? (
+                  <a key={m.name} className="cs-team-member" href={m.href} target="_blank" rel="noreferrer">{inner}</a>
+                ) : (
+                  <div key={m.name} className="cs-team-member">{inner}</div>
+                );
+              })}
+            </div>
+          </CaseSection>
+
+          {/* ───── 09 OUTCOME ───── */}
+          <CaseSection id="outcome" ch="09" title="Result">
+            <div className="cs-prose">
+              <p>
+                The revamp shipped on the e-business portal in 2026. The point of the work wasn't a single metric — it was making three flows that used to feel disconnected feel like one product.
+              </p>
+            </div>
+
+            <div className="cs-outcome">
+              <div className="cs-outcome-item">
+                <div className="v">↑</div>
+                <div className="l">Application completion on fleet finance went up. The configurator gave merchants a reason to finish what they started.</div>
+              </div>
+              <div className="cs-outcome-item">
+                <div className="v">↓</div>
+                <div className="l">Support tickets on fleet finance dropped. The 4-step status replaced the most common "where is my application?" call.</div>
+              </div>
+              <div className="cs-outcome-item">
+                <div className="v">3 → 1</div>
+                <div className="l">Three disconnected flows became one coherent finance experience. Same building blocks, same vocabulary, same dashboard.</div>
+              </div>
+            </div>
+          </CaseSection>
+
+          {/* ───── 10 REFLECT ───── */}
+          <CaseSection id="reflect" ch="10" title="What I learned">
+            <div className="cs-prose">
+              <p>
+                <strong>Leading a multi-flow revamp is less about screens and more about vocabulary.</strong> The big wins came from agreeing on a shared way to name things — "obligation" vs. "balance," "request" vs. "application," "after-sale" vs. "service." Once the names were stable, every team that touched the section started shipping consistent screens without me in the room.
+              </p>
+              <p>
+                <strong>The configurator changed how we thought about every other flow.</strong> Once we'd seen what reframing fleet finance did, the team started asking the same question of every multi-step form we touched: <em>is the user filling this in, or building something?</em> Most of the time, they were building.
+              </p>
+              <p>
+                The lasting lesson: in business banking, "complex" is rarely the user's problem — it's a design that asked them to do the assembly. Do the assembly for them and the complexity goes quiet.
+              </p>
+            </div>
+
+            <div className="cs-callout">
+              Mutaz, six weeks after launch: <em>"Finance finally feels like one product."</em>
+            </div>
+          </CaseSection>
+
+          <NextCase
+            step="Case study · 01"
+            title="Merchant Management Ecosystem"
+            href="merchant.html"
+          />
+
+        </main>
+      </div>
+
+      <ContactFooter />
+    </div>
+  );
+}
+
+function ContactFooter() {
+  return (
+    <footer style={{
+      padding: "80px 64px 48px",
+      borderTop: "1px solid var(--line)",
+      background: "var(--ink)",
+      color: "#fafaf8",
+      marginTop: 80
+    }}>
+      <div style={{ maxWidth: 1440, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: 64, alignItems: "start" }}>
+          <div className="eyebrow" style={{ color: "rgba(250,250,248,0.5)" }}>Contact</div>
+          <div>
+            <div style={{
+              fontFamily: "var(--serif)",
+              fontSize: 56,
+              lineHeight: 1.05,
+              letterSpacing: "-0.025em",
+              maxWidth: 900
+            }}>
+              Want to talk about this case study, or have a project I might be a fit for?
+            </div>
+            <div style={{
+              marginTop: 48,
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gap: 32,
+              borderTop: "1px solid rgba(250,250,248,0.12)",
+              paddingTop: 32
+            }}>
+              <a href="mailto:anas.a.al.saad@gmail.com">
+                <div className="eyebrow" style={{ color: "rgba(250,250,248,0.5)", marginBottom: 8 }}>Email</div>
+                <div style={{ fontFamily: "var(--serif)", fontSize: 22, lineHeight: 1.2 }}>anas.a.al.saad@gmail.com</div>
+              </a>
+              <a href="tel:+966500139137">
+                <div className="eyebrow" style={{ color: "rgba(250,250,248,0.5)", marginBottom: 8 }}>Phone</div>
+                <div style={{ fontFamily: "var(--serif)", fontSize: 22, lineHeight: 1.2 }}>+966 50 013 9137</div>
+              </a>
+              <a href="https://www.linkedin.com/in/anas-al-saad">
+                <div className="eyebrow" style={{ color: "rgba(250,250,248,0.5)", marginBottom: 8 }}>LinkedIn</div>
+                <div style={{ fontFamily: "var(--serif)", fontSize: 22, lineHeight: 1.2 }}>anas-al-saad</div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div style={{
+          marginTop: 80,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          fontFamily: "var(--mono)",
+          fontSize: 11,
+          color: "rgba(250,250,248,0.45)",
+          letterSpacing: "0.06em",
+          textTransform: "uppercase"
+        }}>
+          <span>© {new Date().getFullYear()} · Anas Al-Saad</span>
+          <span>Riyadh, KSA</span>
+          <span>Last updated · Apr 2026</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<FinanceCase />);
+</script>
+</body>
+</html>

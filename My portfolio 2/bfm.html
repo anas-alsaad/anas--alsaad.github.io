@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Business Finance Manager — Anas Al-Saad</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="case-styles.css">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="case-shell.jsx"></script>
+
+<script type="text/babel">
+
+const CHAPTERS = [
+  { id: "context", label: "What it is" },
+  { id: "problem", label: "The drop-off" },
+  { id: "approach", label: "Three principles" },
+  { id: "compare", label: "Before & after" },
+  { id: "walkthrough", label: "The new flow" },
+  { id: "outcome", label: "Result" },
+  { id: "reflect", label: "What I learned" },
+];
+
+function BfmCase() {
+  return (
+    <div style={{ background: "var(--bg)", color: "var(--ink)", fontFamily: "var(--sans)" }}>
+      <CaseTopNav />
+
+      <CaseHero
+        index={2}
+        tag="B2B · Conversion"
+        title={<>Business Finance Manager <em style={{ fontStyle: "italic" }}>Subscription</em></>}
+        lede="Turning a high-drop-off subscription page into a revenue driver — by leading with value instead of a single 'Subscribe' button."
+        meta={[
+          { lbl: "Role",        val: "Product Designer" },
+          { lbl: "Collaborator", val: "Yazeed Alsubie · Product Owner" },
+          { lbl: "Timeline",    val: "Q1–Q2 2026" },
+          { lbl: "Surface",     val: "Al Rajhi e-business app (mobile)" },
+        ]}
+      />
+
+      <div className="cs-shell">
+        <CaseSideNav chapters={CHAPTERS} />
+
+        <main className="cs-main">
+
+          {/* ───── 01 CONTEXT ───── */}
+          <CaseSection id="context" ch="01" title="What it is">
+            <div className="cs-prose">
+              <p>
+                Business Finance Manager (BFM) is a paid add-on inside the Al Rajhi e-business app. It gives small business owners a clearer read on their cash flow — how their clients pay, when traffic peaks, which days move the most money. The screen at the centre of this case is the one where a merchant decides whether BFM is worth subscribing to.
+              </p>
+              <p>
+                In other words: the moment the product has to <strong>sell itself</strong>.
+              </p>
+            </div>
+
+            <div className="cs-callout">
+              The job was never "redesign the modal." It was: <em>make the value of BFM obvious in the four seconds a merchant gives it.</em>
+            </div>
+          </CaseSection>
+
+          {/* ───── 02 PROBLEM ───── */}
+          <CaseSection id="problem" ch="02" title="The drop-off">
+            <div className="cs-prose">
+              <p>
+                The original subscription page was minimal to a fault. A short block of text describing BFM, a couple of feature lines, and a single <strong>Subscribe</strong> button at the bottom. Clean, calm — and not converting.
+              </p>
+              <p>
+                We pulled the funnel with the partner team. Plenty of merchants made it as far as the page. Most of them backed out without tapping anything. The page was technically functional, but the <strong>value of the subscription wasn't being communicated</strong>. People reached the moment of decision with nothing to decide on.
+              </p>
+              <p>
+                I sat down with Yazeed (the PO) to walk through it screen by screen. The pattern was simple: the page was asking for money before it had earned the right to ask.
+              </p>
+            </div>
+
+            <div className="cs-quote-grid">
+              <div className="cs-quote">
+                <p className="q">"I didn't know what I was paying for. It just said 'Subscribe' and that was it."</p>
+                <div className="src">Merchant — interview</div>
+              </div>
+              <div className="cs-quote">
+                <p className="q">"Honestly I closed it. I'll come back when I have time to read."</p>
+                <div className="src">Merchant — interview</div>
+              </div>
+            </div>
+          </CaseSection>
+
+          {/* ───── 03 APPROACH ───── */}
+          <CaseSection id="approach" ch="03" title="Three principles">
+            <div className="cs-prose">
+              <p>
+                We agreed on three principles before drawing anything. Everything else followed from them.
+              </p>
+            </div>
+
+            <div className="cs-principles">
+              <div className="cs-principle">
+                <div className="num">PRINCIPLE 01</div>
+                <h4>Lead with value, not action</h4>
+                <p>
+                  Surface the top three benefits as illustrations the merchant can swipe through. Show what BFM does before asking them to buy it.
+                </p>
+              </div>
+              <div className="cs-principle">
+                <div className="num">PRINCIPLE 02</div>
+                <h4>Make every benefit visible</h4>
+                <p>
+                  A scannable list of every feature BFM includes — sitting right under the swipeable hero, no extra tap required.
+                </p>
+              </div>
+              <div className="cs-principle">
+                <div className="num">PRINCIPLE 03</div>
+                <h4>Keep the CTA unambiguous</h4>
+                <p>
+                  One button, one price, one action: <strong>Subscribe (Pay 1,000 SAR)</strong>. No "Continue," no "Get started," no second-guessing what happens next.
+                </p>
+              </div>
+            </div>
+
+            <div className="cs-callout">
+              The whole redesign is just these three principles, applied honestly. The clever part was resisting the urge to add a fourth.
+            </div>
+          </CaseSection>
+
+          {/* ───── 04 COMPARE ───── */}
+          <CaseSection id="compare" ch="04" title="Before & after">
+            <div className="cs-prose">
+              <p>
+                Same product, same price, same database underneath. The "before" tells the merchant nothing. The "after" tells them <em>why</em> — and only then asks them to pay.
+              </p>
+            </div>
+
+            <div className="cs-phone-compare">
+              <div className="col before">
+                <div className="lbl"><span className="dot"></span> Before</div>
+                <div className="frame tall">
+                  <img
+                    src="assets/bfm-old-subscribe.png"
+                    alt="Original BFM subscription screen — a small icon, two feature lines, and a Subscribe button."
+                  />
+                </div>
+                <p className="cs-caption" style={{ marginTop: 12 }}>
+                  <span className="fig-no">FIG. 01</span>
+                  <span>The original screen. A small icon, two feature lines, and a button — calm, clean, and not converting.</span>
+                </p>
+              </div>
+              <div className="col after">
+                <div className="lbl"><span className="dot"></span> After</div>
+                <div className="frame tall">
+                  <img
+                    src="assets/bfm-new-subscribe.png"
+                    alt="Redesigned subscription screen — large illustrated benefit, swipe indicator, and an All Features link."
+                  />
+                </div>
+                <p className="cs-caption" style={{ marginTop: 12 }}>
+                  <span className="fig-no">FIG. 02</span>
+                  <span>The redesign. A large illustrated benefit at the top, swipeable through three value props, with the full feature list one tap away.</span>
+                </p>
+              </div>
+            </div>
+          </CaseSection>
+
+          {/* ───── 05 WALKTHROUGH ───── */}
+          <CaseSection id="walkthrough" ch="05" title="The new flow">
+            <div className="cs-prose">
+              <p>
+                The full path the merchant takes — from the BFM home, through subscribe and a benefit detail, into account selection, summary, OTP, and a clear success state. Seven screens, but no step that doesn't earn its place.
+              </p>
+            </div>
+
+            <div className="cs-phone-strip">
+              <div className="cs-phone-strip-scroll">
+                <img src="assets/bfm-new-flow.png" alt="The redesigned BFM subscription flow — seven screens from home to success." />
+              </div>
+            </div>
+
+            <div className="cs-walk-captions">
+              <div className="step"><span className="n">01</span><span className="t">BFM home — the dashboard the merchant is upgrading from.</span></div>
+              <div className="step"><span className="n">02</span><span className="t">Subscribe to BFM — illustrated benefits + full feature list.</span></div>
+              <div className="step"><span className="n">03</span><span className="t">Client Traffic — a benefit detail the merchant can swipe through.</span></div>
+              <div className="step"><span className="n">04</span><span className="t">Select Account — pay from the right business account.</span></div>
+              <div className="step"><span className="n">05</span><span className="t">Summary — price, duration, account, all in one view.</span></div>
+              <div className="step"><span className="n">06</span><span className="t">One-Time Password — standard banking confirmation.</span></div>
+              <div className="step"><span className="n">07</span><span className="t">Success — and a direct link back into BFM.</span></div>
+            </div>
+          </CaseSection>
+
+          {/* ───── 06 OUTCOME ───── */}
+          <CaseSection id="outcome" ch="06" title="Result">
+            <div className="cs-prose">
+              <p>
+                The redesign shipped on the e-business app in 2026. The drop-off rate on the subscription page came down meaningfully, and BFM subscription revenue grew alongside it. The exact numbers belong to the partner team — the direction was unambiguous.
+              </p>
+            </div>
+
+            <div className="cs-outcome">
+              <div className="cs-outcome-item">
+                <div className="v">↓</div>
+                <div className="l">Drop-off on the subscription page came down. Merchants stopped backing out before they understood what BFM was.</div>
+              </div>
+              <div className="cs-outcome-item">
+                <div className="v">↑</div>
+                <div className="l">BFM subscription revenue grew. The same traffic that landed before now converted at a higher rate.</div>
+              </div>
+              <div className="cs-outcome-item">
+                <div className="v">3 → 1</div>
+                <div className="l">Three principles, one redesigned page. No new technology, no new pricing — just naming the value out loud.</div>
+              </div>
+            </div>
+
+            <div className="cs-prose">
+              <p>
+                The bigger internal shift was that the team now treats subscription pages as a <strong>marketing surface</strong>, not a settings screen. The pattern from this redesign — illustrated benefits up top, full feature list below, price-bearing CTA — is being reused for the next paid module.
+              </p>
+            </div>
+          </CaseSection>
+
+          {/* ───── 07 REFLECT ───── */}
+          <CaseSection id="reflect" ch="07" title="What I learned">
+            <div className="cs-prose">
+              <p>Two things worth writing down.</p>
+              <p>
+                <strong>A "minimal" page can be the most expensive page in the product.</strong> The original subscribe screen looked clean. It was also the place we were losing revenue. Calm visual design and clear communication aren't the same thing — and on a paywall, the second one matters more.
+              </p>
+              <p>
+                <strong>Designing with the PO, not for them.</strong> Yazeed wasn't a stakeholder I had to convince — he was the person who knew the funnel best. Pulling him into the sketch sessions instead of the review sessions cut the loop in half. By the time we showed it to leadership, we already had an aligned story.
+              </p>
+              <p>
+                The lasting lesson: when a page is failing to convert, the answer is rarely "make it shorter." It's <em>"say the thing."</em>
+              </p>
+            </div>
+
+            <div className="cs-callout">
+              Yazeed, after the launch numbers came in: <em>"We've been sitting on this revenue the whole time."</em>
+            </div>
+          </CaseSection>
+
+          <NextCase
+            step="Case study · 03"
+            title="Finance Revamp"
+            href="portfolio.html#work"
+          />
+
+        </main>
+      </div>
+
+      <ContactFooter />
+    </div>
+  );
+}
+
+function ContactFooter() {
+  return (
+    <footer style={{
+      padding: "80px 64px 48px",
+      borderTop: "1px solid var(--line)",
+      background: "var(--ink)",
+      color: "#fafaf8",
+      marginTop: 80
+    }}>
+      <div style={{ maxWidth: 1440, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: 64, alignItems: "start" }}>
+          <div className="eyebrow" style={{ color: "rgba(250,250,248,0.5)" }}>Contact</div>
+          <div>
+            <div style={{
+              fontFamily: "var(--serif)",
+              fontSize: 56,
+              lineHeight: 1.05,
+              letterSpacing: "-0.025em",
+              maxWidth: 900
+            }}>
+              Want to talk about this case study, or have a project I might be a fit for?
+            </div>
+            <div style={{
+              marginTop: 48,
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gap: 32,
+              borderTop: "1px solid rgba(250,250,248,0.12)",
+              paddingTop: 32
+            }}>
+              <a href="mailto:anas.a.al.saad@gmail.com">
+                <div className="eyebrow" style={{ color: "rgba(250,250,248,0.5)", marginBottom: 8 }}>Email</div>
+                <div style={{ fontFamily: "var(--serif)", fontSize: 22, lineHeight: 1.2 }}>anas.a.al.saad@gmail.com</div>
+              </a>
+              <a href="tel:+966500139137">
+                <div className="eyebrow" style={{ color: "rgba(250,250,248,0.5)", marginBottom: 8 }}>Phone</div>
+                <div style={{ fontFamily: "var(--serif)", fontSize: 22, lineHeight: 1.2 }}>+966 50 013 9137</div>
+              </a>
+              <a href="https://www.linkedin.com/in/anas-al-saad">
+                <div className="eyebrow" style={{ color: "rgba(250,250,248,0.5)", marginBottom: 8 }}>LinkedIn</div>
+                <div style={{ fontFamily: "var(--serif)", fontSize: 22, lineHeight: 1.2 }}>anas-al-saad</div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div style={{
+          marginTop: 80,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          fontFamily: "var(--mono)",
+          fontSize: 11,
+          color: "rgba(250,250,248,0.45)",
+          letterSpacing: "0.06em",
+          textTransform: "uppercase"
+        }}>
+          <span>© {new Date().getFullYear()} · Anas Al-Saad</span>
+          <span>Riyadh, KSA</span>
+          <span>Last updated · Apr 2026</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<BfmCase />);
+</script>
+</body>
+</html>

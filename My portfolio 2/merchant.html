@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Merchant Management — Anas Al-Saad</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="case-styles.css">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="case-shell.jsx"></script>
+
+<script type="text/babel">
+
+const CHAPTERS = [
+{ id: "context", label: "What it is" },
+{ id: "problem", label: "The trust gap" },
+{ id: "discover", label: "Questions first" },
+{ id: "audit", label: "Old screens" },
+{ id: "moves", label: "Three big changes" },
+{ id: "compare", label: "Before & after" },
+{ id: "outcome", label: "Result" },
+{ id: "reflect", label: "What I learned" }];
+
+
+function MerchantCase() {
+  return (
+    <div style={{ background: "var(--bg)", color: "var(--ink)", fontFamily: "var(--sans)" }}>
+      <CaseTopNav />
+
+      <CaseHero
+        index={1}
+        tag="B2B · Lead Product Designer"
+        title={<>Merchant Management <em style={{ fontStyle: "italic" }}>Ecosystem</em></>}
+        lede="A new home for merchants to track their card machines, see when their money arrives, and fix problems on their own — without calling support."
+        meta={[
+        { lbl: "Role", val: "Lead Product Designer" },
+        { lbl: "Team", val: "2 designers · 3 POs " },
+        { lbl: "Timeline", val: "Q2–Q3 2025" },
+        { lbl: "Surface", val: "Al Rajhi e-business portal (web)" }]
+        } />
+      
+
+      <div className="cs-shell">
+        <CaseSideNav chapters={CHAPTERS} />
+
+        <main className="cs-main">
+
+          {/* ───── 01 CONTEXT ───── */}
+          <CaseSection id="context" ch="01" title="What it is">
+            <div className="cs-prose">
+              <p>
+                Al Rajhi's e-business portal is the website thousands of Saudi merchants use to run their business — corner shops, restaurants, gas stations, online stores. It's where they track their card machines, check sales, and ask for help when something goes wrong.
+              </p>
+              <p>
+                The old "Point of Sale" page only did one thing well: it showed a list of devices and a long list of sales. <strong>Everything else merchants actually needed</strong> — comparing in-store vs. online sales, finding a missing payment, grouping their shops by branch, tracking a service request — was either hidden somewhere, or didn't exist at all.
+              </p>
+              <p>
+
+              </p>
+            </div>
+
+            <div className="cs-callout">
+              The job was never "redesign the dashboard." It was: <em>make the merchant trust the number on the screen.</em>
+            </div>
+          </CaseSection>
+
+          {/* ───── 02 PROBLEM ───── */}
+          <CaseSection id="problem" ch="02" title="The trust gap">
+            <div className="cs-prose">
+              <p>
+                The biggest complaint we kept hearing was simple: <strong>the "Total Sales" on the screen didn't match what showed up in the bank account.</strong> Same day, two different numbers, no explanation.
+              </p>
+              <p>
+                The reason was a banking detail the old screen hid. When a customer pays, the money is first put on hold on their card. It's a real sale, but the cash hasn't moved yet. A few days later it actually lands in the shop's account — sometimes the full amount, sometimes a bit less, sometimes not at all.
+              </p>
+              <p>
+                The old dashboard mixed both numbers — "on hold" and "actually paid" — into one big total. So a merchant would close out at SAR 40M on screen, then panic when only SAR 32M hit the bank. They'd raise a complaint. Support would explain. Same thing the next day.
+              </p>
+            </div>
+
+            <div className="cs-quote-grid">
+              <div className="cs-quote">
+                <p className="q">"I see one number on the screen and a different number from the bank. Which one is the real one?"</p>
+                <div className="src">Merchant — gas station chain</div>
+              </div>
+              <div className="cs-quote">
+                <p className="q">"My accountant has been opening tickets every week for the same 'missing' money."</p>
+                <div className="src">Merchant — restaurant group</div>
+              </div>
+            </div>
+
+            <div className="cs-prose">
+              <p>
+                So the problem wasn't a number problem. It was a <strong>naming problem</strong>. Two different things were being shown as one thing.
+              </p>
+            </div>
+          </CaseSection>
+
+          {/* ───── 03 DISCOVER ───── */}
+          <CaseSection id="discover" ch="03" title="Questions first">
+            <div className="cs-prose">
+              <p>
+                I ran two workshops with the partner team that runs the card machines — they know the rules and the small print I didn't. Before drawing anything, I needed answers to a long list of basic questions.
+              </p>
+            </div>
+
+            <div className="cs-question-list">
+              <div className="qhead">My open questions — round 1</div>
+              <ul>
+                <li>Do we have Soft POS, and how is it different from a regular card machine?</li>
+                <li>Can the merchant turn a machine on or off themselves?</li>
+                <li>Do machines have a fee the merchant has to pay?</li>
+                <li>Is there a list of subscriptions? What happens if one isn't paid?</li>
+                <li>Can the merchant see machine details by tapping its ID?</li>
+                <li>What actions belong on the details page — pay fee, cancel, see history?</li>
+                <li>Can a merchant fix one sale, or do they have to fix the whole day at once?</li>
+                <li>Do we offer an online payment service alongside the machines?</li>
+                <li>How does a merchant know if they've already opened a ticket for a sale?</li>
+                <li>Are fixes done sale-by-sale, or on the day's total?</li>
+                <li>Should we compare in-store vs. online sales by month, week, or 31 days?</li>
+              </ul>
+            </div>
+
+            <div className="cs-prose">
+              <p>
+                Each one was a decision I would have gotten wrong without the answer. Soft POS turned out to be a different kind of machine with its own statuses. "On hold" turned out to have its own life cycle (open → released → expired → paid). And fixes happen sale-by-sale, not on the day's total — which shaped how I built the complaints flow later on.
+              </p>
+              <p>
+                I turned the answers into a one-page glossary and pinned it to the Figma file. Every review after that started by pointing to it. <strong>Shared words are faster than shared screens.</strong>
+              </p>
+            </div>
+
+            <div className="cs-callout">
+              Most of this phase was just admitting what I didn't know — and refusing to design around it.
+            </div>
+          </CaseSection>
+
+          {/* ───── 04 AUDIT ───── */}
+          <CaseSection id="audit" ch="04" title="Old screens">
+            <div className="cs-prose">
+              <p>
+                Before drawing anything new, I went through the old version screen by screen — twelve in total: home, machines list, sales history, payments, complaints, requests, services. For each one, I noted what worked, what didn't, and which of my open questions it failed to answer.
+              </p>
+            </div>
+
+            <Figure
+              src="assets/merchant-before.png"
+              tone="paper"
+              caption="The old home page. A pie chart with no context, a single 'last payment' card with no history, and a sales chart that mixed money on hold with money actually paid — all in the same bars."
+              figNo="01" />
+            
+
+            <div className="cs-asis-grid">
+              {[
+              "01-terminals", "02-transactions", "03-payments",
+              "04-claims", "05-documents", "06-requests",
+              "07-services", "08-users", "09-users-alt"].
+              map((slug) =>
+              <div key={slug} className="frame">
+                  <img src={`assets/old-screens/${slug}.png`} alt="" />
+                </div>
+              )}
+            </div>
+            <p className="cs-caption">
+              <span className="fig-no">FIG. 02</span>
+              <span>The audit board: every screen the old portal forced merchants through. Going through them against my list of questions made the patterns clear — no overview of the machines, no way to group shops, complaints buried two pages deep, no way to compare time periods.</span>
+            </p>
+
+            <div className="cs-prose">
+              <p>The audit found four big gaps the new design had to fix:</p>
+              <ol style={{ paddingLeft: 20, color: "var(--ink-2)" }}>
+                <li style={{ marginBottom: 8 }}><strong>No overview.</strong> Merchants with 50+ machines had to scroll a flat list. No quick way to see how many were online, offline, or having issues.</li>
+                <li style={{ marginBottom: 8 }}><strong>No way to group.</strong> A gas-station chain has stations, branches, and shifts. The portal saw it all as one big list.</li>
+                <li style={{ marginBottom: 8 }}><strong>Complaints were a dead end.</strong> You could only raise one at a time, and you couldn't tell if you'd already raised one for the same sale.</li>
+                <li><strong>No way to compare.</strong> In-store vs. online, this week vs. last — none of it was possible.</li>
+              </ol>
+            </div>
+          </CaseSection>
+
+          {/* ───── 05 MOVES ───── */}
+          <CaseSection id="moves" ch="05" title="Three big changes">
+            <div className="cs-prose">
+              <p>
+                The redesign came down to three big changes. Everything else — colours, copy, small fixes — followed from these.
+              </p>
+            </div>
+
+            <div className="cs-move">
+              <div className="num">CHANGE 01</div>
+              <div>
+                <h4>Show "on hold" and "paid" as two different things</h4>
+                <p>
+                  Total Sales now shows one main number — the money that has actually arrived — with the "on hold" amount as a smaller marker on the same bar. Sales that are still on hold get their own row in the table, with a clear status (waiting, released, expired) and an estimate of when they'll arrive. The trust gap closes because the two numbers never get mashed together again.
+                </p>
+              </div>
+            </div>
+
+            <div className="cs-move">
+              <div className="num">CHANGE 02</div>
+              <div>
+                <h4>Let merchants group their shops their own way</h4>
+                <p>
+                  Instead of forcing one structure, "My Groups" lets merchants build their own layout — chain → branch → shift, or region → store → machine. Each group rolls up its sales, status, and any open complaints. The right-hand panel makes it easy to jump around without leaving the dashboard. A one-shop merchant never has to see the complexity. A 200-machine merchant doesn't run out of room.
+                </p>
+              </div>
+            </div>
+
+            <div className="cs-move">
+              <div className="num">CHANGE 03</div>
+              <div>
+                <h4>Fix many sales at once, by yourself</h4>
+                <p>
+                  Open complaints now show on the dashboard — not buried behind a button. The sales table lets you tick several rows at once, so you can flag all the missing sales from a busy Friday night in one go. Every row also tells you if there's already a ticket open for that sale — which means people stop opening duplicates.
+                </p>
+              </div>
+            </div>
+
+            <Figure
+              src="assets/merchant-main.png"
+              tone="paper"
+              caption="The new home page. Four clear KPIs at the top: number of sales, total amount, refunds, and a tracker. Total Sales shows the 'on hold' and 'paid' parts on the same bar. My Groups lets merchants build their own structure. Quick actions, machines overview, and the explorer panel are all one click away."
+              figNo="03" />
+            
+          </CaseSection>
+
+          {/* ───── 06 COMPARE ───── */}
+          <CaseSection id="compare" ch="06" title="Before & after">
+            <div className="cs-prose">
+              <p>
+                Same merchant, same numbers — two very different products. The "before" technically shows everything, somewhere. The "after" is <em>useful</em>: the merchant can answer the questions they came to the page to ask.
+              </p>
+            </div>
+
+            <div className="cs-compare">
+              <div className="cs-compare-col before">
+                <div className="lbl"><span className="dot"></span> Before</div>
+                <div className="frame"><img src="assets/merchant-before.png" alt="" /></div>
+              </div>
+              <div className="cs-compare-col after">
+                <div className="lbl"><span className="dot"></span> After</div>
+                <div className="frame"><img src="assets/merchant-main.png" alt="" /></div>
+              </div>
+            </div>
+            <p className="cs-caption">
+              <span className="fig-no">FIG. 04</span>
+              <span>Side by side. One vague number became four clear ones. Groups became a real thing. The state of every machine moved up to the home page instead of hiding on its own tab.</span>
+            </p>
+          </CaseSection>
+
+          {/* ───── 07 RESULT ───── */}
+          <CaseSection id="outcome" ch="07" title="Result">
+            <div className="cs-prose">
+              <p>
+                The redesign shipped on the Al Rajhi e-business portal in late 2025. A small selection of the final screens — from the main dashboard down to a single device's detail page.
+              </p>
+            </div>
+
+            <div className="cs-result-gallery">
+              <div className="cs-result-frame feature">
+                <span className="cs-result-tag">01 · Main dashboard</span>
+                <img src="assets/result-main-dashboard.png" alt="Merchant Management main dashboard — the command center bridging financial data and operational control." />
+              </div>
+
+              <div className="cs-result-row">
+                <div className="cs-result-frame">
+                  <span className="cs-result-tag">02 · Group detail</span>
+                  <img src="assets/result-group-detail.png" alt="Group Detail view — drill down into the performance of specific business units." />
+                </div>
+                <div className="cs-result-frame">
+                  <span className="cs-result-tag">03 · Device detail</span>
+                  <img src="assets/result-device-detail.png" alt="Device Detail — micro-level insights for a single point-of-sale terminal." />
+                </div>
+              </div>
+
+              <div className="cs-result-row">
+                <div className="cs-result-frame">
+                  <span className="cs-result-tag">04 · Claim resolution</span>
+                  <img src="assets/result-claims.png" alt="My Claims — frictionless, user-controlled claim resolution." />
+                </div>
+                <div className="cs-result-frame">
+                  <span className="cs-result-tag">05 · Create a group</span>
+                  <img src="assets/result-create-group.png" alt="Create a Group — merchants build their own organizational structure." />
+                </div>
+              </div>
+            </div>
+
+            <div className="cs-outcome">
+              <div className="cs-outcome-item">
+                <div className="v">12 → 1</div>
+                <div className="l">Old screens reviewed. Folded into one home page that opens up only when you need more.</div>
+              </div>
+              <div className="cs-outcome-item">
+                <div className="v">4</div>
+                <div className="l">New first-class things added: "on hold" sales, groups, branches, and the tracker.</div>
+              </div>
+              <div className="cs-outcome-item">
+                <div className="v">1</div>
+                <div className="l">Whole category of complaints — "where is my money?" — dropped sharply after launch.</div>
+              </div>
+            </div>
+
+            <div className="cs-prose">
+              <p>
+                Inside the team, the bigger win was that the portal now has a working pattern for groups and overviews. The Finance Revamp project (the next case) reused the same idea for credit cards.
+              </p>
+            </div>
+          </CaseSection>
+
+          {/* ───── 08 REFLECT ───── */}
+          <CaseSection id="reflect" ch="08" title="What I learned">
+            <div className="cs-prose">
+              <p>Two things I'd do differently next time.</p>
+              <p>
+                <strong>Bring the partner team in earlier.</strong> The first round of questions could have happened during planning, not after the first mockups. I caught the "on hold" idea in time, but only because one person on the team flagged it. Building the glossary before the first wireframe would have saved two weeks.
+              </p>
+              <p>
+                <strong>Treat the words as part of the design, from day one.</strong> The most common feedback wasn't "wrong layout" — it was "I don't know what this word means." Half the work was just renaming things: <em>unsettled</em> → <em>on hold</em>, <em>POS Statement</em> → <em>Sales History</em>, <em>Claim</em> → <em>More Details</em>. Saying it accurately without using bank-speak is harder than it looks.
+              </p>
+              <p>
+                The lasting lesson: in business banking, the design problem is usually a <em>naming problem</em>. If two things on the screen feel like the same thing in the user's head, no layout will save you. Get the names right and the layout follows.
+              </p>
+            </div>
+
+            <div className="cs-callout">
+              The product owner's words, six months in: <em>"Merchants finally trust the number."</em>
+            </div>
+          </CaseSection>
+
+          <NextCase
+            step="Case study · 02"
+            title="Business Finance Manager — Subscription"
+            href="bfm.html" />
+          
+        </main>
+      </div>
+
+      <ContactFooter />
+    </div>);
+
+}
+
+function ContactFooter() {
+  return (
+    <footer style={{
+      padding: "80px 64px 48px",
+      borderTop: "1px solid var(--line)",
+      background: "var(--ink)",
+      color: "#fafaf8",
+      marginTop: 80
+    }}>
+      <div style={{ maxWidth: 1440, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: 64, alignItems: "start" }}>
+          <div className="eyebrow" style={{ color: "rgba(250,250,248,0.5)" }}>Contact</div>
+          <div>
+            <div style={{
+              fontFamily: "var(--serif)",
+              fontSize: 56,
+              lineHeight: 1.05,
+              letterSpacing: "-0.025em",
+              maxWidth: 900
+            }}>
+              Want to talk about this case study, or have a project I might be a fit for?
+            </div>
+            <div style={{
+              marginTop: 48,
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gap: 32,
+              borderTop: "1px solid rgba(250,250,248,0.12)",
+              paddingTop: 32
+            }}>
+              <a href="mailto:anas.a.al.saad@gmail.com">
+                <div className="eyebrow" style={{ color: "rgba(250,250,248,0.5)", marginBottom: 8 }}>Email</div>
+                <div style={{ fontFamily: "var(--serif)", fontSize: 22, lineHeight: 1.2 }}>anas.a.al.saad@gmail.com</div>
+              </a>
+              <a href="tel:+966500139137">
+                <div className="eyebrow" style={{ color: "rgba(250,250,248,0.5)", marginBottom: 8 }}>Phone</div>
+                <div style={{ fontFamily: "var(--serif)", fontSize: 22, lineHeight: 1.2 }}>+966 50 013 9137</div>
+              </a>
+              <a href="https://www.linkedin.com/in/anas-al-saad">
+                <div className="eyebrow" style={{ color: "rgba(250,250,248,0.5)", marginBottom: 8 }}>LinkedIn</div>
+                <div style={{ fontFamily: "var(--serif)", fontSize: 22, lineHeight: 1.2 }}>anas-al-saad</div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div style={{
+          marginTop: 80,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          fontFamily: "var(--mono)",
+          fontSize: 11,
+          color: "rgba(250,250,248,0.45)",
+          letterSpacing: "0.06em",
+          textTransform: "uppercase"
+        }}>
+          <span>© {new Date().getFullYear()} · Anas Al-Saad</span>
+          <span>Riyadh, KSA</span>
+          <span>Last updated · Apr 2026</span>
+        </div>
+      </div>
+    </footer>);
+
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<MerchantCase />);
+</script>
+</body>
+</html>
